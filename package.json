@@ -2,7 +2,7 @@
     "name": "diary-app",
     "version": "0.0.1",
     "description": "일기장",
-    "productName": "yuu2dev 일기장",
+    "productName": "일기쓰기 앱",
     "author": "yuu2dev <yuu2dev@gmail.com>",
     "private": true,
     "scripts": {

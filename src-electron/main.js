@@ -1,8 +1,8 @@
-import { app, nativeTheme } from 'electron'
+import { app, nativeTheme, nativeImage } from 'electron'
 import path from 'path'
 import fs from 'fs'
 import os from 'os'
-import * as windowService from './tools/window'
+import * as windowService from './services/window'
 // eslint-disable-next-line no-unused-vars
 import('./handlers/common')
 let mainWindow
@@ -16,8 +16,16 @@ try {
 } catch (e) {
     console.error(e)
 }
-app.whenReady().then(() => {
-    mainWindow = windowService.createWindow()
+const renderMainWindow = () => {
+    const icon = path.resolve(
+        __dirname,
+        process.env.QUASAR_PUBLIC_FOLDER,
+        'favicon.png',
+    )
+    mainWindow = windowService.createWindow({ icon })
+    mainWindow.webContents.on('dom-ready', () => {
+        mainWindow.show()
+    })
     mainWindow.on('closed', () => {
         mainWindow = null
     })
@@ -25,23 +33,21 @@ app.whenReady().then(() => {
     if (process.env.DEBUGGING) {
         mainWindow.webContents.openDevTools()
     }
+    // 앱 dock 아이콘 설정
+    const image = nativeImage.createFromPath(icon)
+    app.dock.setIcon(image)
+}
+app.whenReady().then(() => {
+    renderMainWindow()
 })
 app.on('window-all-closed', () => {
     if (platform !== 'darwin') {
         app.quit()
     }
 })
-app.invoke
 app.on('activate', () => {
-    if (!mainWindow) {
+    if (mainWindow) {
         return
     }
-    mainWindow = windowService.createWindow()
-    mainWindow.loadURL(process.env.APP_URL)
-    if (process.env.DEBUGGING) {
-        mainWindow.webContents.openDevTools()
-    }
-    mainWindow.on('closed', () => {
-        mainWindow = null
-    })
+    renderMainWindow()
 })

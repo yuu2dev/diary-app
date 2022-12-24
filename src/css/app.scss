@@ -1,1 +1,26 @@
-// app global css in SCSS form
+@font-face {
+    font-family: 'Dongle';
+    src: url(./fonts/Dongle-Regular.woff);
+}
+@font-face {
+    font-family: 'DongleBold';
+    src: url(./fonts/Dongle-Regular.woff);
+}
+body {
+    font-family: 'Dongle';
+    font-size: 24px;
+}
+.diary-theme-1 {
+    background: rgba(115, 190, 234, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(115, 190, 234, 0.26);
+}
+.diary-theme-2 {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+}

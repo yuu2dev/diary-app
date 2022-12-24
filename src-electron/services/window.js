@@ -1,12 +1,12 @@
 import { BrowserWindow } from 'electron'
 import path from 'path'
-export const createWindow = () => {
-    const icon = path.resolve(__dirname, 'icons/icon.png')
+export const createWindow = ({ icon } = {}) => {
     const window = new BrowserWindow({
         icon,
         width: 1000,
         height: 600,
         useContentSize: true,
+        show: false,
         webPreferences: {
             /**
              * @memo nodeIntegration

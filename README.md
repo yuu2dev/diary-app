@@ -6,14 +6,24 @@
 # 설치
 
 ```sh
+# Quasar CLI 설치
+npm install -g @quasar/cli
+```
+
+# 실행 명령어
+
+```sh
 # 개발 환경 실행
 npm run dev
 # 배포
 npm run build
+# 아이콘 생성
+icongenie generate -m electron -i [이미지 경로]
 ```
 
 # 요구사항
--   [✓] : 환경구축
+
+-   [x] : 환경구축
 -   [ ] : 일기목록
 -   [ ] : 일기작성
 -   [ ] : 일기삭제

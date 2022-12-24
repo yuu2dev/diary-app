@@ -69,11 +69,12 @@ module.exports = configure(ctx => {
             //   [ 'package-name', { ..options.. } ]
             // ]
         },
-
-        // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
         devServer: {
             // https: true
-            open: true, // opens browser window automatically
+            open: true,
+            port: 8080,
+            // 시간 간격으로 변경 검사
+            poll: 1000,
         },
 
         // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
