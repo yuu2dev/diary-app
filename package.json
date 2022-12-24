@@ -6,13 +6,17 @@
     "author": "yuu2dev <yuu2dev@gmail.com>",
     "private": true,
     "scripts": {
-        "dev": "npm install && quasar dev --mode electron",
+        "dev": "npm install && quasar dev -m electron",
+        "build": "npm install && quasar build -m electron",
         "lint": "eslint --ext .js,.vue ./",
         "format": "prettier --write \"**/*.{js,vue,scss,html,md,json}\" --ignore-path .gitignore"
     },
     "dependencies": {
         "@quasar/extras": "^1.0.0",
         "axios": "^0.21.1",
+        "days": "^1.1.1",
+        "fs-extra": "^11.1.0",
+        "lodash": "^4.17.21",
         "pinia": "^2.0.11",
         "quasar": "^2.6.0",
         "vue": "^3.0.0",
@@ -22,6 +26,7 @@
         "@quasar/app-vite": "^1.0.0",
         "autoprefixer": "^10.4.2",
         "electron": "^21.3.1",
+        "electron-packager": "^15.5.2",
         "eslint": "^8.10.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-prettier": "^8.1.0",

@@ -18,13 +18,13 @@ try {
 }
 app.whenReady().then(() => {
     mainWindow = windowService.createWindow()
+    mainWindow.on('closed', () => {
+        mainWindow = null
+    })
     mainWindow.loadURL(process.env.APP_URL)
     if (process.env.DEBUGGING) {
         mainWindow.webContents.openDevTools()
     }
-    mainWindow.on('closed', () => {
-        mainWindow = null
-    })
 })
 app.on('window-all-closed', () => {
     if (platform !== 'darwin') {

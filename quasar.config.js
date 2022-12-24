@@ -52,7 +52,10 @@ module.exports = configure(ctx => {
 
             // publicPath: '/',
             // analyze: true,
-            env,
+            env: {
+                APP_VERSION: process.env.npm_package_version,
+                ...env,
+            },
             // rawDefine: {}
             // ignorePublicFolder: true,
             // minify: false,
