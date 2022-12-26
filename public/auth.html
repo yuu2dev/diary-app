@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>일기장 열기</title>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta
+            name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+        />
+    </head>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            display: grid;
+            place-items: center;
+            background: black;
+        }
+        section {
+            display: flex;
+            justify-content: center;
+        }
+        input {
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 300;
+            border: none;
+            text-align: center;
+            font-size: 4em;
+            border-radius: 10px;
+            margin: 5px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        input:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .glass-panel {
+            color: #fff;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            border-radius: 15px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+        }
+        .glass-button {
+            display: inline-block;
+            margin: 0 5px;
+            border: 0;
+            text-decoration: none;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .glass-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <body>
+        <main class="glass-panel">
+            <section style="padding: 10px">
+                <input id="input1" type="password" maxlength="1" />
+                <input type="password" maxlength="1" />
+                <input type="password" maxlength="1" />
+                <input type="password" maxlength="1" />
+                <input type="password" maxlength="1" />
+                <input type="password" maxlength="1" />
+            </section>
+            <section style="padding: 10px">
+                <button class="glass-button" style="padding: 12px 32px">
+                    열기
+                </button>
+                <button class="glass-button" style="padding: 12px 32px">
+                    취소
+                </button>
+            </section>
+        </main>
+        <script>
+            const inputs = document.querySelectorAll('input')
+            for (const input of inputs) {
+                input.addEventListener('input', () => {
+                    if (input.nextElementSibling) {
+                        input.nextElementSibling.focus()
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>

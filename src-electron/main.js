@@ -5,7 +5,7 @@ import os from 'os'
 import * as windowService from './services/window'
 // eslint-disable-next-line no-unused-vars
 import('./handlers/common')
-let mainWindow
+let mainWindow, authWindow
 let platform
 try {
     // 리눅스에서는 process.platform 이 undefined
@@ -22,6 +22,7 @@ const renderMainWindow = () => {
         process.env.QUASAR_PUBLIC_FOLDER,
         'favicon.png',
     )
+    // 메인 윈도우
     mainWindow = windowService.createWindow({ icon })
     mainWindow.webContents.on('dom-ready', () => {
         mainWindow.show()
@@ -37,8 +38,22 @@ const renderMainWindow = () => {
     const image = nativeImage.createFromPath(icon)
     app.dock.setIcon(image)
 }
+const renderAuthWindow = () => {
+    // 인증 모달
+    authWindow = windowService.createWindow({
+        height: 300,
+        width: 600,
+        modal: true,
+        parent: mainWindow,
+    })
+    authWindow.loadFile(
+        path.resolve(__dirname, process.env.QUASAR_PUBLIC_FOLDER, 'auth.html'),
+    )
+    // authWindow.show()
+}
 app.whenReady().then(() => {
     renderMainWindow()
+    renderAuthWindow()
 })
 app.on('window-all-closed', () => {
     if (platform !== 'darwin') {

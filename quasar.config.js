@@ -42,14 +42,11 @@ module.exports = configure(ctx => {
                 ],
                 node: 'node16',
             },
-
-            vueRouterMode: 'hash', // available values: 'hash', 'history'
+            vueRouterMode: 'history', // available values: 'hash', 'history'
             // vueRouterBase,
             // vueDevtools,
             // vueOptionsAPI: false,
-
             // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
-
             // publicPath: '/',
             // analyze: true,
             env: {
